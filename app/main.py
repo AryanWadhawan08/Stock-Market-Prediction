@@ -67,7 +67,7 @@ def results():
         start = datetime(end.year-2, end.month, end.day)
         data = yf.download(quote, start=start, end=end)
         df = pd.DataFrame(data=data)
-        df.to_csv('static/results/' + quote + '.csv')
+        df.to_csv('app/static/results/' + quote + '.csv')
 
         if df.empty:
             ts = TimeSeries(key='N6A6QT6IBFJOPJ70', output_format='pandas')
@@ -90,7 +90,7 @@ def results():
             df['Adj Close'] = data['5. adjusted close']
             df['Volume'] = data['6. volume']
 
-            df.to_csv('static/results/' + quote + '.csv', index=False)
+            df.to_csv('app/static/results/' + quote + '.csv', index=False)
         return
 
     # ******************** ARIMA SECTION ********************
@@ -129,7 +129,7 @@ def results():
 
             fig = plt.figure(figsize=(7.2, 4.8), dpi=65)
             plt.plot(Quantity_date)
-            plt.savefig('static/results/Trends.png')
+            plt.savefig('app/static/results/Trends.png')
             plt.close(fig)
 
             quantity = Quantity_date.values
@@ -144,7 +144,7 @@ def results():
             plt.plot(test, label='Actual Price')
             plt.plot(predictions, label='Predicted Price')
             plt.legend(loc=4)
-            plt.savefig('static/results/ARIMA.png')
+            plt.savefig('app/static/results/ARIMA.png')
             plt.close(fig)
             print()
             print(
@@ -270,7 +270,7 @@ def results():
         plt.plot(predicted_stock_price, label='Predicted Price')
 
         plt.legend(loc=4)
-        plt.savefig('static/results/LSTM.png')
+        plt.savefig('app/static/results/LSTM.png')
         plt.close(fig)
 
         error_lstm = math.sqrt(mean_squared_error(
@@ -339,7 +339,7 @@ def results():
         plt.plot(y_test, label='Actual Price')
         plt.plot(y_test_pred, label='Predicted Price')
         plt.legend(loc=4)
-        plt.savefig('static/results/LR.png')
+        plt.savefig('app/static/results/LR.png')
         plt.close(fig)
 
         error_lr = math.sqrt(mean_squared_error(y_test, y_test_pred))
@@ -364,7 +364,7 @@ def results():
     def retrieving_tweets_polarity(symbol):
         symbol = symbol.upper()
         stock_ticker_map = pd.read_csv(
-            'static/data/Yahoo-Finance-Ticker-Symbols.csv'
+            'app/static/data/Yahoo-Finance-Ticker-Symbols.csv'
         )
         stock_full_form = stock_ticker_map[stock_ticker_map['Ticker'] == symbol]
         print(stock_full_form)
@@ -451,7 +451,7 @@ def results():
         # Equal aspect ratio ensures that pie is drawn as a circle
         ax1.axis('equal')
         plt.tight_layout()
-        plt.savefig('static/results/SA.png')
+        plt.savefig('app/static/results/SA.png')
         plt.close(fig)
         # plt.show()
 
@@ -513,7 +513,7 @@ def results():
 
     else:
         # ************** PREPROCESSUNG ***********************
-        df = pd.read_csv('static/results/' + quote + '.csv')
+        df = pd.read_csv('app/static/results/' + quote + '.csv')
         print(
             "##############################################################################")
         print("Today's", quote, "Stock Data: ")
