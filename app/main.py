@@ -14,7 +14,7 @@ from app.Tweet import Tweet
 
 import nltk
 from textblob import TextBlob
-import preprocessor as p
+import preprocessor.api as p
 import tweepy
 import yfinance as yf
 
