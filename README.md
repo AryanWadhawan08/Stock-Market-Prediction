@@ -1,4 +1,6 @@
+<div align="center">
 <img align="center" src="https://miro.medium.com/max/4096/1*WtZDnrVjk4sPoNc4Br1Hvw.jpeg" height=300>
+</div>
 
 # Stock Market Prediction
 A python web application created with python and flask to predict stock prices for the next 7 days for any stock input by user available under NASDAQ (National Association of Securities Dealers Automated Quotations) or NSE (National Stock Exchange of India Ltd.).
